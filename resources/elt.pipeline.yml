@@ -1,0 +1,16 @@
+resources:
+  pipelines:
+    etl_pipeline:
+      name: etl_pipeline
+      catalog: ${var.catalog}
+      schema: ${var.schema}
+      serverless: true
+      root_path: "../src/pipeline_etl"
+
+      libraries:
+        - glob:
+            include: ../src/pipeline_etl/transformations/**
+
+      configuration:
+        source_catalog: ${var.catalog}
+        source_schema: ${var.schema}
